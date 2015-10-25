@@ -3,12 +3,24 @@
  */
 var ukeSongbookControllers = angular.module('ukeSongbookControllers', []);
 
-ukeSongbookControllers.controller('MainCtrl', ['$scope', '$document', 'Option',
-    function($scope, $document, Option) {
+ukeSongbookControllers.controller('MainCtrl', ['$scope', '$document', 'Song',
+    function($scope, $document, Song) {
 
-        $scope.options = Option.list(function(data){
+        $scope.songs = Song.list(function(data){
             console.log(data);
         });
+
+        $scope.voteFor = function(song) {
+            try {
+                song.voted = !song.voted;
+            } catch(e) {
+                song.voted = true;
+            }
+            if(song.voted === true) {
+                // salvar voto
+            }
+        }
+
 
     }]);
 

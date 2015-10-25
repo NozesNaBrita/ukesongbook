@@ -30,7 +30,7 @@ app.use(express.static(__dirname + '/' + staticdir)); // set the static files lo
 
 
 var routes = require('./server/routes/api');
-app.get('/api/v1/options', routes.list);
+app.get('/api/v1/songs', routes.list);
 
 // start app ===============================================
 app.listen(port);                   // startup our app at http://localhost:8080

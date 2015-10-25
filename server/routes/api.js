@@ -4,13 +4,13 @@
 var express = require("express");
 var router = express.Router();
 
-var Option = require('../models/Option.js');
-console.log(Option);
+var Song = require('../models/Song.js');
+console.log(Song);
 exports.list = function(req, res) {
-	console.log('----options---');
-	Option.find(function(err, options) {
+	console.log('----songs---');
+	Song.find(function(err, songs) {
 		console.log(err);
-		console.log(options);
-		res.json(options);
+		console.log(songs);
+		res.json(songs);
 	});
 };

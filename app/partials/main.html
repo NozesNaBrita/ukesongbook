@@ -14,8 +14,16 @@
 							   focus-me-directive="focus === 'songSearch'"
 							   required>
 					</div>
-{{options}}
+			<ul class="list-group">
+				<li class="list-group-item" data-ng-repeat="song in songs" data-ng-click="voteFor(song)">
+
+						<i data-ng-show="!song.voted" class="material-icons text-muted">&#xE87E;</i>
+					<i data-ng-show="song.voted" class="material-icons voted">&#xE87D;</i>
+
+					{{song.title}} - {{song.artist}}</li>
+			</ul>
 
 		</form>
+
 	</div>
 </div>

@@ -19,6 +19,7 @@ $primary-color:        #607D8B;
 $primary-color-light:  #CFD8DC;
 $primary-color-text:   #FFFFFF;
 $accent-color:         #ff3d00;
+$heart:                 #ff3d00;
 $primary-text-color:   #212121;
 $secondary-text-color: #727272;
 $divider-color:        #B6B6B6;
@@ -34,7 +35,7 @@ $state-danger-text:    #F57C00;
 
 
 // Sobrescrevendo as cores do boostrêipe
-$grid-gutter-width: 60px;
+//$grid-gutter-width: 60px;
 
 $text-color: $primary-text-color;
 $brand-primary:                  $accent-color;
@@ -104,8 +105,8 @@ $navbar-inverse-toggle-border-color:        #333 !default;
 //@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/thumbnails";
 //@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/alerts";
 //@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/progress-bars";
-@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/media";
-//@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/list-group";
+//@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/media";
+@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/list-group";
 //@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/panels";
 //@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/responsive-embed";
 //@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/wells";
@@ -133,7 +134,7 @@ body {
   background-color: white;
   //background-image: url(http://www.transparenttextures.com/patterns/graphy.png);
   /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
-  font-size: 16px;
+  //font-size: 16px;
   font-weight: $headings-font-weight;
 }
 
@@ -155,6 +156,9 @@ label, .radio label, .checkbox label {
 label .optional {
   color: $primary-color-light;
   font-style: italic;
+}
+i.voted {
+  color: $heart;
 }
 
 // Boostrap

@@ -3,17 +3,15 @@
  */
 var ukeSongbookServices = angular.module('ukeSongbookServices', ['ngResource']);
 
- // @todo como resolver a port??
-// interceptors http://stackoverflow.com/questions/26039877/angular-js-global-config-for-resource-success-query
 ukeSongbookServices.factory('Poll', ['$resource', function($resource) {
         return $resource('http://dev.ukesongbook:3000/polls/:pollId', {}, {
             query: { method: 'GET', params: { pollId: 'polls' }, isArray: true }
         })
     }]);
 
-ukeSongbookServices.factory('Option', ['$resource', function($resource) {
-        return $resource('api/v1/options/:optionId', {}, {
-            get: { method: 'GET', params: { optionId: 'pollId' }, isArray: false },
+ukeSongbookServices.factory('Song', ['$resource', function($resource) {
+        return $resource('api/v1/songs/:songId', {}, {
+            get: { method: 'GET', params: { songId: 'songId' }, isArray: false },
             list: { method: 'GET', isArray: true }
         })
     }]);
