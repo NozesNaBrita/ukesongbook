@@ -1,0 +1,284 @@
+/*!
+ * Bootstrap v3.3.5 (http://getbootstrap.com)
+ * Copyright 2011-2015 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
+
+// Example...
+//@import url(http://fonts.googleapis.com/css?family=Raleway:400,700,300);
+//$font-family-base: 'Raleway', sans-serif;
+
+// Pra que usar tudo de vez, juvenil?
+//@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
+
+
+// DOMINANT PALETTE
+// BLUE GREY
+$primary-color-dark:   #455A64;
+$primary-color:        #607D8B;
+$primary-color-light:  #CFD8DC;
+$primary-color-text:   #FFFFFF;
+$accent-color:         #ff3d00;
+$primary-text-color:   #212121;
+$secondary-text-color: #727272;
+$divider-color:        #B6B6B6;
+
+// LIGHT GREEN
+$secondary-color-dark: #689F38;
+$secondary-color:      #8BC34A;
+
+$brand-success:        $secondary-color-dark;
+$state-danger-text:    #F57C00;
+
+
+
+
+// Sobrescrevendo as cores do boostrêipe
+$grid-gutter-width: 60px;
+
+$text-color: $primary-text-color;
+$brand-primary:                  $accent-color;
+$brand-info:                  $primary-color;
+
+$headings-font-weight: 300;
+$headings-line-height: 1.2;
+
+$input-border-focus: $secondary-color;
+
+$border-radius-base:        3px;
+$border-radius-large:       3px;
+$border-radius-small:       3px;
+
+$hr-border: transparent;
+
+// Navbar links
+//$navbar-default-link-color:                white;
+
+// Navbar toggle
+$navbar-default-toggle-hover-bg:           $accent-color;
+//$navbar-default-toggle-icon-bar-bg:        white;
+
+// Inverted navbar toggle
+$navbar-inverse-toggle-hover-bg:            #333 !default;
+//$navbar-inverse-toggle-icon-bar-bg:         #fff !default;
+$navbar-inverse-toggle-border-color:        #333 !default;
+
+
+// isso não funciona @media é interpretado pelo browser DEPOIS do sass compilar
+//@media (min-width : 768px) {
+//  $font-size-base: 24px;
+//}
+
+
+// Core variables and mixins
+@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/variables";
+@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/mixins";
+//
+//// Reset and dependencies
+@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/normalize";
+@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/print";
+// @import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/glyphicons";
+
+// Core CSS
+@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/scaffolding";
+@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/type";
+@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/code";
+@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/grid";
+// @import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/tables";
+@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/forms";
+@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/buttons";
+
+// Components
+//@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/component-animations";
+//@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/dropdowns";
+//@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/button-groups";
+@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/input-groups";
+@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/navs";
+@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/navbar";
+//@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/breadcrumbs";
+//@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/pagination";
+//@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/pager";
+//@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/labels";
+//@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/badges";
+//@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/jumbotron";
+//@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/thumbnails";
+//@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/alerts";
+//@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/progress-bars";
+@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/media";
+//@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/list-group";
+//@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/panels";
+//@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/responsive-embed";
+//@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/wells";
+@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/close";
+
+//// Components w/ JavaScript
+//@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/modals";
+//@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/tooltip";
+//@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/popovers";
+//@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/carousel";
+
+// Utility classes
+@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/utilities";
+@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/responsive-utilities";
+
+// -----------------------------------------------------------------------------------------------------------
+
+// Google font
+
+
+// General
+// ------------------------
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: white;
+  //background-image: url(http://www.transparenttextures.com/patterns/graphy.png);
+  /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+  font-size: 16px;
+  font-weight: $headings-font-weight;
+}
+
+h1, .h1, h2, .h2, h3, .h3 {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  line-height: $headings-line-height;
+}
+
+p {
+  line-height: 26px;
+  margin-bottom: 20px;
+  font-weight: 300;
+}
+
+label, .radio label, .checkbox label {
+  font-weight: $headings-font-weight;
+}
+label .optional {
+  color: $primary-color-light;
+  font-style: italic;
+}
+
+// Boostrap
+.form-control-static {
+  font-size: 14px;
+}
+
+#footer {
+  //background: url("../assets/sunrise.jpg") no-repeat center center fixed;
+  background:   $primary-text-color;
+  color: $secondary-text-color;
+  background-size: cover;
+  //a {
+  //  color: white;
+  //
+  //}
+  section {
+    margin-bottom: 30px;
+  }
+  h1, .h1, h2, .h2, h3, .h3,
+  h4, .h4, h5, .h5, h6, .h6{
+    color: white;
+  }
+}
+
+// Forms
+// ------------------------
+label {
+  color:rgba(0, 0, 0, 0.56);
+}
+
+.has-error label {
+  color: $state-danger-text;
+}
+
+.no-shadow-input {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.input-group-addon {
+  color: $text-muted;
+  padding-right: 10px;
+}
+
+.form-control-static {
+  padding: $padding-base-vertical+2 $padding-base-horizontal; // +1 por causa das bordas que o static não tem?
+  background-color: $primary-color-light;
+  border-radius: $border-radius-base;
+  line-height: $line-height-base;
+  //** Default `.form-control` height
+  height: $input-height-base;
+}
+
+
+// Navbar
+// ------------------------
+.navbar-default {
+  background: transparent;
+  border: 0; //1px solid #234a60;
+  margin-bottom: -$navbar-height;
+  .navbar-brand {
+    //color: white;
+    font-weight: $headings-font-weight;
+  }
+  .navbar-toggle {
+    //color: white;
+    border: none;
+  }
+  .navbar-collapse {
+    border: none;
+  }
+}
+
+// Grid
+.row {
+  padding-top: 20px;
+  padding-bottom: 40px;
+}
+
+// http://davidwalsh.name/write-media-queries-sass
+// https://scotch.io/quick-tips/default-sizes-for-twitter-bootstraps-media-queries
+// https://github.com/paranoida/sass-mediaqueries brutal! mas numa segunda versão
+/*==========  Mobile First Method  ==========*/
+
+
+/* Custom, iPhone Retina */
+@media only screen and (min-width : 320px) {
+
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (min-width : 480px) {
+
+}
+
+//@media screen and (min-width:600px) { }
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+
+}
+
+// Para mobile Safari. Mas acho que deixarei para todos...
+// http://stackoverflow.com/questions/2989263/disable-auto-zoom-in-input-text-tag-safari-on-iphone
+// No o Safari mobile, o tamanho 100% é 16px, que é o padrão na maioria dos browsers. Quando o tamamnho
+// da fonte é menor do que isso, o navegador dá um zoom ao quando você foca um campo texto. E fica assim
+// daí em diante -- parecendo que é um bug. Algumas pessoas "solucionam" isso travando o zoom, mas não
+// concordo. Essa solução ajusta a fonte e isso não acontece mais
+//@media screen and (-webkit-min-device-pixel-ratio:0) {
+  select:focus,
+  textarea:focus,
+  input:focus {
+    font-size: 16px;
+    background: #eee;
+  }
+//}
