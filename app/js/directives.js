@@ -3,10 +3,10 @@
  */
 var ukeSongbookDirectives = angular.module('ukeSongbookDirectives', []);
 
-ukeSongbookDirectives.directive('topbarDirective', ['$document', function ($document) {
+ukeSongbookDirectives.directive('navbarDirective', ['$document', function ($document) {
     return {
         restrict: 'E',
-        templateUrl: 'partials/topbar.html'
+        templateUrl: 'partials/navbar.html'
     };
 }]);
 

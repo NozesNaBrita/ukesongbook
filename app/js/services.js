@@ -1,7 +1,23 @@
 /**
  * Created by thiago on 18/10/15.
  */
-var ukeSongbookServices = angular.module('ukeSongbookServices', []);
+var ukeSongbookServices = angular.module('ukeSongbookServices', ['ngResource']);
+
+ // @todo como resolver a port??
+
+ukeSongbookServices.factory('Poll', ['$resource', function($resource) {
+        return $resource('http://dev.ukesongbook:3000/polls/:pollId', {}, {
+            query: { method: 'GET', params: { pollId: 'polls' }, isArray: true }
+        })
+    }]);
+
+ukeSongbookServices.factory('Option', ['$resource', function($resource) {
+        return $resource('http://dev.ukesongbook:3000/options/:optionId', {}, {
+            get: { method: 'GET', params: { optionId: 'pollId' }, isArray: false },
+            list: { method: 'GET', isArray: true }
+        })
+    }]);
+
 
 ukeSongbookServices.factory('reportRequestService', ['$rootScope', function ($rootScope) {
     var pristineModel = {
