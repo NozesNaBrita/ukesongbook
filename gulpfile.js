@@ -40,10 +40,25 @@ var paths = {
     distProdStyles: './dist.prod/styles',
     distProdAssets: './dist.prod/assets',
     distScriptsProd: './dist.prod/scripts',
-    scriptsDevServer: 'devServer/**/*.js'
+
+    server: './app.js',
+    serverScripts: ['./bin/*', './routes/**/*.js', './models/**/*.js']
+
 };
 
 var pipes = {};
+
+pipes.nodemonDev = function() {
+    return plugins.nodemon({
+        script: paths.server,
+        env: {
+            'NODE_ENV': 'development'
+        }
+    })
+        .on('restart');
+};
+
+
 
 pipes.assetsDev = function() {
     return gulp.src(paths.assets)
@@ -149,7 +164,7 @@ pipes.builtPartialsDev = function() {
 
 // Skipped validatedDevServerScripts
 pipes.validatedDevServerScripts = function() {
-    return gulp.src(paths.scriptsDevServer)
+    return gulp.src(paths.serverScripts)
         .pipe(plugins.jshint())
         .pipe(plugins.jshint.reporter('jshint-stylish'));
 };
@@ -289,6 +304,8 @@ gulp.task('clean-prod', function() {
 });
 
 
+gulp.task('nodemon-dev', pipes.nodemonDev);
+
 gulp.task('move-assets-dev', pipes.assetsDev);
 
 // checks html source files for syntax errors
@@ -304,7 +321,7 @@ gulp.task('build-partials-dev', pipes.builtPartialsDev);
 gulp.task('convert-partials-to-js', pipes.scriptedPartials);
 
 // runs jshint on the dev server scripts
- gulp.task('validate-devserver-scripts', pipes.validatedDevServerScripts);
+gulp.task('validate-devserver-scripts', pipes.validatedDevServerScripts);
 
 // runs jshint on the app scripts
 gulp.task('validate-app-scripts', pipes.validatedAppScripts);
@@ -359,19 +376,17 @@ function handleError(level, error) {
 // Convenience handler for error-level errors.
 function onError(error) { handleError.call(this, 'error', error);}
 
-
 // clean, build, and watch live changes to the dev environment
-gulp.task('watch-dev', ['clean-build-app-dev'], function() {
-//gulp.task('watch-dev', ['clean-build-app-dev', 'validate-devserver-scripts'], function() {
-
+gulp.task('watch-dev', ['clean-build-app-dev', 'validate-devserver-scripts'], function() {
     // start nodemon to auto-reload the dev server
-    //plugins.nodemon({ script: 'server.js', ext: 'js', watch: ['devServer/'], env: {NODE_ENV : 'development'} })
-    //    .on('change', ['validate-devserver-scripts'])
-    //    .on('restart', function () {
-    //        console.log('[nodemon] restarted dev server');
-    //    });
+    //plugins.nodemon({ script: paths.server, ext: 'js', watch: ['server/'], env: {NODE_ENV : 'development'} })
+    plugins.nodemon({ script: './server.js', ext: 'js', watch: ['models/', 'routes/', 'bin/'], env: {NODE_ENV : 'development'} })
+        .on('change', ['validate-devserver-scripts'])
+        .on('restart', function () {
+            console.log('[nodemon] restarted dev server');
+        });
 
-    // start live-reload server // @todo usar se o LiveReload do chrome
+    // start live-reload server
     livereload.listen({ start: true, port: 35729}); // essa é a porta padrão
 
     // watch index

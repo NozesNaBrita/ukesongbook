@@ -32,16 +32,15 @@ app.use(express.static(path.join(__dirname, 'app'))); // ?
 app.use('/bower_components',  express.static(__dirname + '/bower_components'));
 
 
-var routes = require('./routes/index.js');
-app.use('/users', users);
+//var routes = require('./routes/index.js');
+//app.use('/users', users);
 
 // Define API routes for data storage
 //app.get('/polls/polls', routes.list);
 //app.get('/polls/:id', routes.poll);
 //app.post('/polls', routes.create);
-console.log(routes);
+var routes = require('./routes/index.js');
 app.get('/options', routes.list);
-//app.listen(3000);
 //app.listen(27017);
 
 console.log("aaaa");
