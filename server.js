@@ -32,6 +32,23 @@ app.use(express.static(__dirname + '/' + staticdir)); // set the static files lo
 var routes = require('./server/routes/api');
 app.get('/api/v1/songs', routes.list);
 
+// FACEBOOK
+// https://github.com/jaredhanson/passport-facebook
+// ================================================================
+
+passport.use(new FacebookStrategy({
+		clientID: FACEBOOK_APP_ID,
+		clientSecret: FACEBOOK_APP_SECRET,
+		callbackURL: "http://dev.ukesongbook:8080/auth/facebook/callback",
+		enableProof: false
+	},
+	function(accessToken, refreshToken, profile, done) {
+		User.findOrCreate({ facebookId: profile.id }, function (err, user) {
+			return done(err, user);
+		});
+	}
+));
+
 // start app ===============================================
 app.listen(port);                   // startup our app at http://localhost:8080
 console.log('Starting sever on port ' + port);       // shoutout to the user
