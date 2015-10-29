@@ -80,7 +80,9 @@
     "socket.io": "~1.3.7",
     "mongodb": "~2.0.46",
     "gulp-express": "~0.3.5",
-    "ejs": "~2.3.4"
+    "ejs": "~2.3.4",
+    "passport-facebook": "~2.0.0",
+    "passport": "~0.3.0"
   },
   "scripts": {
     "start": "node ./server/bin/www",
