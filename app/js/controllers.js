@@ -19,7 +19,7 @@ ukeSongbookControllers.controller('MainCtrl', ['$scope', '$document', 'Song',
             if(song.voted === true) {
                 // salvar voto
             }
-        }
+        };
 
 
     }]);
