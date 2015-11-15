@@ -6,6 +6,8 @@ var app            = express();
 var bodyParser     = require('body-parser');
 var methodOverride = require('method-override');
 var mongoose = require('mongoose');
+var dotenv = require('dotenv');
+dotenv.load();
 
 // set our port
 var port = process.env.PORT || 8080;
