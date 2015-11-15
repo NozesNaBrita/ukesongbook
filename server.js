@@ -7,12 +7,14 @@ var bodyParser     = require('body-parser');
 var methodOverride = require('method-override');
 var mongoose = require('mongoose');
 
-var port = process.env.PORT || 8080; // set our port
-var staticdir = process.env.NODE_ENV === 'production' ? 'dist.prod' : 'dist.dev'; // get static files dir
+// set our port
+var port = process.env.PORT || 8080;
+// get static files dir
+var staticdir = process.env.NODE_ENV === 'production' ? 'dist.prod' : 'dist.dev';
 
 // connect to Mongo when the app initializes
-mongoose.connect('mongodb://localhost:27017/ukepolls');
-//27017
+// use MONGODB if set on .env file or use heroku MONGOLAB plugin on prod
+mongoose.connect(process.env.MONGODB || process.env.MONGOLAB_URI);
 
 // get all data/stuff of the body (POST) parameters
 app.use(bodyParser.json()); // parse application/json
@@ -35,21 +37,20 @@ app.get('/api/v1/songs', routes.list);
 // FACEBOOK
 // https://github.com/jaredhanson/passport-facebook
 // ================================================================
-
-//passport.use(new FacebookStrategy({
-//		clientID: FACEBOOK_APP_ID,
-//		clientSecret: FACEBOOK_APP_SECRET,
-//		callbackURL: "http://dev.ukesongbook:8080/auth/facebook/callback",
-//		enableProof: false
-//	},
-//	function(accessToken, refreshToken, profile, done) {
-//		User.findOrCreate({ facebookId: profile.id }, function (err, user) {
-//			return done(err, user);
-//		});
-//	}
-//));
+// passport.use(new FacebookStrategy({
+// 		clientID: process.env.FACEBOOK_APP_ID,
+// 		clientSecret: process.env.FACEBOOK_APP_SECRET,
+// 		callbackURL: process.env.FACEBOOK_CALLBACK_URL,
+// 		enableProof: false
+// 	},
+// 	function(accessToken, refreshToken, profile, done) {
+// 		User.findOrCreate({ facebookId: profile.id }, function (err, user) {
+// 			return done(err, user);
+// 		});
+// 	}
+// ));
 
 // start app ===============================================
-app.listen(port);                   // startup our app at http://localhost:8080
-console.log('Starting sever on port ' + port);       // shoutout to the user
-exports = module.exports = app;             // expose app
+app.listen(port);
+console.log('Starting sever on port ' + port);
+exports = module.exports = app;

@@ -1,1 +1,1 @@
-web: gulp watch-prod
+web: node ./server.js
