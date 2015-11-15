@@ -379,7 +379,6 @@ function onError(error) { handleError.call(this, 'error', error);}
 // clean, build, and watch live changes to the dev environment
 gulp.task('watch-dev', ['clean-build-app-dev', 'validate-devserver-scripts'], function() {
     // start nodemon to auto-reload the dev server
-    //plugins.nodemon({ script: paths.server, ext: 'js', watch: ['server/'], env: {NODE_ENV : 'development'} })
     plugins.nodemon({ script: './server.js', ext: 'js', watch: ['models/', 'routes/', 'bin/'], env: {NODE_ENV : 'development'} })
         .on('change', ['validate-devserver-scripts'])
         .on('restart', function () {
@@ -394,7 +393,6 @@ gulp.task('watch-dev', ['clean-build-app-dev', 'validate-devserver-scripts'], fu
         return pipes.builtIndexDev()
             .pipe(livereload())
             .on('error', onError);
-
     });
 
     // watch app scripts
@@ -429,18 +427,16 @@ gulp.task('watch-dev', ['clean-build-app-dev', 'validate-devserver-scripts'], fu
 
 
 // clean, build, and watch live changes to the prod environment
-gulp.task('watch-prod', ['clean-build-app-prod'], function() {
-//gulp.task('watch-prod', ['clean-build-app-prod', 'validate-devserver-scripts'], function() {
+gulp.task('watch-prod', ['clean-build-app-prod', 'validate-devserver-scripts'], function() {
     // start nodemon to auto-reload the dev server
-    //plugins.nodemon({ script: 'server.js', ext: 'js', watch: ['devServer/'], env: {NODE_ENV : 'production'} })
-    //    .on('change', ['validate-devserver-scripts'])
-    //    .on('restart', function () {
-    //        console.log('[nodemon] restarted dev server');
-    //    });
-
+    plugins.nodemon({ script: './server.js', ext: 'js', watch: ['models/', 'routes/', 'bin/'], env: {NODE_ENV : 'production'} })
+        .on('change', ['validate-devserver-scripts'])
+        .on('restart', function () {
+            console.log('[nodemon] restarted prod server');
+        });
 
     // start live-reload server
-    livereload.listen({start: true});
+    livereload.listen({ start: true, port: 35729}); // essa é a porta padrão
 
     // watch index
     gulp.watch(paths.index, function() {

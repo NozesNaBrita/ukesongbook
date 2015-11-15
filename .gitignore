@@ -11,8 +11,8 @@
 /test/reports
 /test/tmp/
 
-/bower.json
-/component.json
+#/bower.json
+#/component.json
 /bower_components
 
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio
