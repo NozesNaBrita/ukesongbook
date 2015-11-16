@@ -157,8 +157,11 @@ label .optional {
   color: $primary-color-light;
   font-style: italic;
 }
-i.voted {
-  color: $heart;
+.song-item{
+  cursor: pointer;
+  i.voted{
+    color: $heart;
+  }
 }
 
 // Boostrap
