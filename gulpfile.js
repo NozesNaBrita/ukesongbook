@@ -125,7 +125,7 @@ pipes.builtAppScriptsProd = function() {
         .pipe(pipes.orderedAppScripts())
         .pipe(plugins.sourcemaps.init())
         .pipe(plugins.concat('app.min.js'))
-        //.pipe(plugins.uglify())
+        .pipe(plugins.uglify())
         .pipe(plugins.sourcemaps.write())
         .pipe(gulp.dest(paths.distScriptsProd)).on('error', function(e){
             console.log(e);
@@ -471,44 +471,3 @@ gulp.task('watch-prod', ['clean-build-app-prod', 'validate-devserver-scripts'], 
 
 // default task builds for prod
 gulp.task('default', ['clean-build-app-prod']);
-//
-//// ---
-//
-//var config = {
-//    sassPath: './resources/sass',
-//    bowerDir: './bower_components'
-//};
-//
-//gulp.task('bower', function () {
-//    return bower()
-//        .pipe(gulp.dest(config.bowerDir))
-//});
-//
-//gulp.task('sass', function () {
-//    return sass(config.sassPath + '/style.scss', {style: 'compressed'})
-//        .on('error', sass.logError)
-//        .pipe(gulp.dest('./public/css'));
-//});
-//
-//// @todo usar o notify? senão, remover a dependência
-////gulp.task('css', function () {
-////    return gulp.src(config.sassPath + '/style.scss')
-////        .pipe(sass({
-////            style: 'compressed',
-////            loadPath: [
-////                './resources/sass',
-////                config.bowerDir + '/bootstrap-sass/assets/stylesheets'
-////            ]
-////        })
-////            .on("error", notify.onError(function (error) {
-////                return "Error: " + error.message;
-////            })))
-////        .pipe(gulp.dest('./public/css'));
-////});
-//
-//// Rerun the task when a file changes
-//gulp.task('watch', function() {
-//    gulp.watch(config.sassPath + '/**/*.scss', ['css']);
-//});
-//
-//gulp.task('default', ['bower', 'sass']);
