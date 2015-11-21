@@ -42,8 +42,6 @@ app.get('/api/v1/songs', routes.list);
 // https://github.com/jaredhanson/passport-facebook
 // ================================================================
 
-var config = require('./server/config');
-
 // Passport session setup.
 //   To support persistent login sessions, Passport needs to be able to
 //   serialize users into and deserialize users out of the session.  Typically,
