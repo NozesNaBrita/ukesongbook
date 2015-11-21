@@ -42,8 +42,6 @@ app.get('/api/v1/songs', routes.list);
 // https://github.com/jaredhanson/passport-facebook
 // ================================================================
 
-var config = require('./server/config');
-
 // Passport session setup.
 //   To support persistent login sessions, Passport needs to be able to
 //   serialize users into and deserialize users out of the session.  Typically,
@@ -60,9 +58,9 @@ passport.deserializeUser(function(obj, done) {
 });
 
 passport.use(new FacebookStrategy({
-		clientID: config.FACEBOOK_APP_ID,
-		clientSecret: config.FACEBOOK_APP_SECRET,
-		callbackURL: "http://dev.ukesongbook:8080/auth/facebook/callback",
+		clientID: process.env.FACEBOOK_APP_ID,
+		clientSecret: process.env.FACEBOOK_APP_SECRET,
+		callbackURL: process.env.FACEBOOK_CALLBACK_URL,
 		enableProof: false
 	},
 	function(accessToken, refreshToken, profile, done) {
@@ -77,8 +75,6 @@ passport.use(new FacebookStrategy({
 app.get('/auth/facebook',
 	passport.authenticate('facebook'),
 	function(req, res){
-		console.log(req);
-		console.log(res);
 		// The request will be redirected to Facebook for authentication, so this
 		// function will not be called.
 	});
