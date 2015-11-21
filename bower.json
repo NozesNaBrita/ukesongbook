@@ -17,7 +17,6 @@
     "bootstrap-sass": "bootstrap-sass-official#~3.3.5",
     "angular": "~1.4.7",
     "angular-route": "~1.4.7",
-    "angular-scroll": "~0.7.3",
     "angular-resource": "~1.4.7"
   }
 }

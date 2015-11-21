@@ -142,7 +142,8 @@ pipes.builtVendorScriptsDev = function() {
 // For production, we order third-party scripts, then concatenate and uglify them into a single file.
 // I chose not to create a sourcemap for this one, because it ended up being too large.
 pipes.builtVendorScriptsProd = function() {
-    return gulp.src(bowerFiles('**/*.js'))
+    //return gulp.src(bowerFiles('**/*.js'))
+    return gulp.src(bowerFiles())
         .pipe(pipes.orderedVendorScripts())
         .pipe(plugins.concat('vendor.min.js'))
         .pipe(plugins.uglify().on('error', function(e){console.log(e)})) // @todo tá dando erro. por ora, deixa assim

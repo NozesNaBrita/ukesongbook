@@ -57,6 +57,10 @@ passport.deserializeUser(function(obj, done) {
 	done(null, obj);
 });
 
+// Use the FacebookStrategy within Passport.
+//   Strategies in Passport require a `verify` function, which accept
+//   credentials (in this case, an accessToken, refreshToken, and Facebook
+//   profile), and invoke a callback with a user object.
 passport.use(new FacebookStrategy({
 		clientID: process.env.FACEBOOK_APP_ID,
 		clientSecret: process.env.FACEBOOK_APP_SECRET,
@@ -66,6 +70,7 @@ passport.use(new FacebookStrategy({
 	function(accessToken, refreshToken, profile, done) {
 		console.log(profile);
 		return done(null, profile);
+		// @todo to create our own user
 		//User.findOrCreate({ facebookId: profile.id }, function (err, user) {
 		//	return done(err, user);
 		//});
