@@ -59,18 +59,22 @@ passport.deserializeUser(function(obj, done) {
 	done(null, obj);
 });
 
+// Use the FacebookStrategy within Passport.
+//   Strategies in Passport require a `verify` function, which accept
+//   credentials (in this case, an accessToken, refreshToken, and Facebook
+//   profile), and invoke a callback with a user object.
 passport.use(new FacebookStrategy({
-		clientID: config.FACEBOOK_APP_ID,
-		clientSecret: config.FACEBOOK_APP_SECRET,
-		callbackURL: "http://dev.ukesongbook:8080/auth/facebook/callback",
+		clientID: process.env.FACEBOOK_APP_ID,
+		clientSecret: process.env.FACEBOOK_APP_SECRET,
+		callbackURL: process.env.FACEBOOK_CALLBACK_URL,
 		enableProof: false
 	},
 	function(accessToken, refreshToken, profile, done) {
 		console.log(profile);
-		return done(null, profile);
-		//User.findOrCreate({ facebookId: profile.id }, function (err, user) {
-		//	return done(err, user);
-		//});
+		//return done(null, profile);
+		User.findOrCreate({ facebookId: profile.id }, function (err, user) {
+			return done(err, user);
+		});
 	}
 ));
 
