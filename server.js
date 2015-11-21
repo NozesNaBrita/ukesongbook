@@ -69,18 +69,17 @@ passport.use(new FacebookStrategy({
 	},
 	function(accessToken, refreshToken, profile, done) {
 		console.log(profile);
-		//return done(null, profile);
-		User.findOrCreate({ facebookId: profile.id }, function (err, user) {
-			return done(err, user);
-		});
+		return done(null, profile);
+		// @todo to create our own user
+		//User.findOrCreate({ facebookId: profile.id }, function (err, user) {
+		//	return done(err, user);
+		//});
 	}
 ));
 
 app.get('/auth/facebook',
 	passport.authenticate('facebook'),
 	function(req, res){
-		console.log(req);
-		console.log(res);
 		// The request will be redirected to Facebook for authentication, so this
 		// function will not be called.
 	});
