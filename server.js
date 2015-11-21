@@ -8,13 +8,17 @@ var methodOverride = require('method-override');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var FacebookStrategy = require('passport-facebook').Strategy;
+var dotenv = require('dotenv');
+dotenv.load();
 
-var port = process.env.PORT || 8080; // set our port
-var staticdir = process.env.NODE_ENV === 'production' ? 'dist.prod' : 'dist.dev'; // get static files dir
+// set our port
+var port = process.env.PORT || 8080;
+// get static files dir
+var staticdir = process.env.NODE_ENV === 'production' ? 'dist.prod' : 'dist.dev';
 
 // connect to Mongo when the app initializes
-mongoose.connect('mongodb://localhost:27017/ukepolls');
-//27017
+// use MONGODB if set on .env file or use heroku MONGOLAB plugin on prod
+mongoose.connect(process.env.MONGODB || process.env.MONGOLAB_URI);
 
 // get all data/stuff of the body (POST) parameters
 app.use(bodyParser.json()); // parse application/json
@@ -37,6 +41,7 @@ app.get('/api/v1/songs', routes.list);
 // FACEBOOK
 // https://github.com/jaredhanson/passport-facebook
 // ================================================================
+
 var config = require('./server/config');
 
 // Passport session setup.
@@ -86,6 +91,6 @@ app.get('/auth/facebook/callback',
 	});
 
 // start app ===============================================
-app.listen(port);                   // startup our app at http://localhost:8080
-console.log('Starting sever on port ' + port);       // shoutout to the user
-exports = module.exports = app;             // expose app
+app.listen(port);
+console.log('Starting sever on port ' + port);
+exports = module.exports = app;

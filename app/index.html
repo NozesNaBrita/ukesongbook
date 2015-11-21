@@ -10,10 +10,8 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!--usar mesmo??-->
     <!--<meta property="og:locale" content="pt_BR">-->
 
-    <!--https://developers.facebook.com/docs/sharing/best-practices-->
     <!--General-->
     <meta property="og:site_name" content="The Uke Songbook">
     <meta property="og:url" content="..." />
@@ -23,40 +21,7 @@
 
     <meta property="og:description" content="...">
 
-
-    <!--<meta property="og:video:tag" content="Star Wars (Film Series)">-->
-    <!--<meta property="og:video:tag" content="Star Wars Episode VII (Film)">-->
-    <!--<meta property="og:video:tag" content="the force awakens">-->
-    <!--<meta property="og:video:tag" content="star wars the force awakens">-->
-    <!--<meta property="og:video:tag" content="Trailer">-->
-    <!--<meta property="og:video:tag" content="Official">-->
-    <!--<meta property="og:video:tag" content="Teaser Trailer">-->
-    <!--<meta property="og:video:tag" content="episode vii">-->
-    <!--<meta property="og:video:tag" content="episode 7">-->
-    <!--<meta property="og:video:tag" content="star wars: episode vii">-->
-
-    <!--<meta property="fb:app_id" content="87741124305">-->
-
-    <!--<meta name="twitter:card" content="player">-->
-    <!--<meta name="twitter:site" content="@youtube">-->
-    <!--<meta name="twitter:url" content="http://www.youtube.com/watch?v=sGbxmsDFVnE">-->
-    <!--<meta name="twitter:title" content="Star Wars: The Force Awakens Trailer (Official)">-->
-    <!--<meta name="twitter:description" content="Watch the official trailer for Star Wars: The Force Awakens, coming to theaters December 18, 2015. Visit Star Wars at http://www.starwars.com Subscribe to St...">-->
-    <!--<meta name="twitter:image" content="https://i.ytimg.com/vi/sGbxmsDFVnE/maxresdefault.jpg">-->
-    <!--<meta name="twitter:app:name:iphone" content="YouTube">-->
-    <!--<meta name="twitter:app:id:iphone" content="544007664">-->
-    <!--<meta name="twitter:app:name:ipad" content="YouTube">-->
-    <!--<meta name="twitter:app:id:ipad" content="544007664">-->
-    <!--<meta name="twitter:app:url:iphone" content="vnd.youtube://www.youtube.com/watch?v=sGbxmsDFVnE&amp;feature=applinks">-->
-    <!--<meta name="twitter:app:url:ipad" content="vnd.youtube://www.youtube.com/watch?v=sGbxmsDFVnE&amp;feature=applinks">-->
-    <!--<meta name="twitter:app:name:googleplay" content="YouTube">-->
-    <!--<meta name="twitter:app:id:googleplay" content="com.google.android.youtube">-->
-    <!--<meta name="twitter:app:url:googleplay" content="http://www.youtube.com/watch?v=sGbxmsDFVnE">-->
-    <!--<meta name="twitter:player" content="https://www.youtube.com/embed/sGbxmsDFVnE">-->
-    <!--<meta name="twitter:player:width" content="1280">-->
-    <!--<meta name="twitter:player:height" content="720">-->
-
-    <!--Inserir via gulp?  -->
+    <!-- TODO: Insert using gulp? -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <!--codepoints index for browsers that do not support ligatures -->
@@ -75,16 +40,15 @@
 </head>
 <body>
 <!--[if lt IE 7]>
-<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
-    your browser</a> to improve your experience.</p>
+
 <![endif]-->
 
     <topbar-directive></topbar-directive>
-
-<div class="container-fluid">
-    <div id="ng-view" ng-view="" autoscroll=""></div>
-    <footer-directive></footer-directive>
-</div>
+    <h1>O Songbook do Ukulele</h1>
+    <div class="container-fluid">
+        <div id="ng-view" ng-view="" autoscroll=""></div>
+        <footer-directive></footer-directive>
+    </div>
 
 <!-- bower:js -->
 <!-- endinject -->

@@ -157,8 +157,11 @@ label .optional {
   color: $primary-color-light;
   font-style: italic;
 }
-i.voted {
-  color: $heart;
+.song-item{
+  cursor: pointer;
+  i.voted{
+    color: $heart;
+  }
 }
 
 // Boostrap
@@ -279,10 +282,16 @@ label {
 // daí em diante -- parecendo que é um bug. Algumas pessoas "solucionam" isso travando o zoom, mas não
 // concordo. Essa solução ajusta a fonte e isso não acontece mais
 //@media screen and (-webkit-min-device-pixel-ratio:0) {
-  select:focus,
-  textarea:focus,
-  input:focus {
+//  select:focus,
+//  textarea:focus,
+//  input:focus {
+.form-control ,
+  select,
+  textarea,
+  input {
     font-size: 16px;
-    background: #eee;
+
   }
+
+
 //}

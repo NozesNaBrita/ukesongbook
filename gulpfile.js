@@ -125,7 +125,7 @@ pipes.builtAppScriptsProd = function() {
         .pipe(pipes.orderedAppScripts())
         .pipe(plugins.sourcemaps.init())
         .pipe(plugins.concat('app.min.js'))
-        //.pipe(plugins.uglify())
+        .pipe(plugins.uglify())
         .pipe(plugins.sourcemaps.write())
         .pipe(gulp.dest(paths.distScriptsProd)).on('error', function(e){
             console.log(e);
@@ -379,7 +379,6 @@ function onError(error) { handleError.call(this, 'error', error);}
 // clean, build, and watch live changes to the dev environment
 gulp.task('watch-dev', ['clean-build-app-dev', 'validate-devserver-scripts'], function() {
     // start nodemon to auto-reload the dev server
-    //plugins.nodemon({ script: paths.server, ext: 'js', watch: ['server/'], env: {NODE_ENV : 'development'} })
     plugins.nodemon({ script: './server.js', ext: 'js', watch: ['models/', 'routes/', 'bin/'], env: {NODE_ENV : 'development'} })
         .on('change', ['validate-devserver-scripts'])
         .on('restart', function () {
@@ -394,7 +393,6 @@ gulp.task('watch-dev', ['clean-build-app-dev', 'validate-devserver-scripts'], fu
         return pipes.builtIndexDev()
             .pipe(livereload())
             .on('error', onError);
-
     });
 
     // watch app scripts
@@ -429,18 +427,16 @@ gulp.task('watch-dev', ['clean-build-app-dev', 'validate-devserver-scripts'], fu
 
 
 // clean, build, and watch live changes to the prod environment
-gulp.task('watch-prod', ['clean-build-app-prod'], function() {
-//gulp.task('watch-prod', ['clean-build-app-prod', 'validate-devserver-scripts'], function() {
+gulp.task('watch-prod', ['clean-build-app-prod', 'validate-devserver-scripts'], function() {
     // start nodemon to auto-reload the dev server
-    //plugins.nodemon({ script: 'server.js', ext: 'js', watch: ['devServer/'], env: {NODE_ENV : 'production'} })
-    //    .on('change', ['validate-devserver-scripts'])
-    //    .on('restart', function () {
-    //        console.log('[nodemon] restarted dev server');
-    //    });
-
+    plugins.nodemon({ script: './server.js', ext: 'js', watch: ['models/', 'routes/', 'bin/'], env: {NODE_ENV : 'production'} })
+        .on('change', ['validate-devserver-scripts'])
+        .on('restart', function () {
+            console.log('[nodemon] restarted prod server');
+        });
 
     // start live-reload server
-    livereload.listen({start: true});
+    livereload.listen({ start: true, port: 35729}); // essa é a porta padrão
 
     // watch index
     gulp.watch(paths.index, function() {
@@ -474,44 +470,3 @@ gulp.task('watch-prod', ['clean-build-app-prod'], function() {
 
 // default task builds for prod
 gulp.task('default', ['clean-build-app-prod']);
-//
-//// ---
-//
-//var config = {
-//    sassPath: './resources/sass',
-//    bowerDir: './bower_components'
-//};
-//
-//gulp.task('bower', function () {
-//    return bower()
-//        .pipe(gulp.dest(config.bowerDir))
-//});
-//
-//gulp.task('sass', function () {
-//    return sass(config.sassPath + '/style.scss', {style: 'compressed'})
-//        .on('error', sass.logError)
-//        .pipe(gulp.dest('./public/css'));
-//});
-//
-//// @todo usar o notify? senão, remover a dependência
-////gulp.task('css', function () {
-////    return gulp.src(config.sassPath + '/style.scss')
-////        .pipe(sass({
-////            style: 'compressed',
-////            loadPath: [
-////                './resources/sass',
-////                config.bowerDir + '/bootstrap-sass/assets/stylesheets'
-////            ]
-////        })
-////            .on("error", notify.onError(function (error) {
-////                return "Error: " + error.message;
-////            })))
-////        .pipe(gulp.dest('./public/css'));
-////});
-//
-//// Rerun the task when a file changes
-//gulp.task('watch', function() {
-//    gulp.watch(config.sassPath + '/**/*.scss', ['css']);
-//});
-//
-//gulp.task('default', ['bower', 'sass']);
