@@ -3,10 +3,8 @@
   "description": "Uke Songbook",
   "version": "0.0.2",
   "main": "",
-  "devDependencies": {
-  },
-  "dependencies": {
-  },
+  "devDependencies": {},
+  "dependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,5 +13,5 @@
     "url": "git@github.com:colares/uke-songbook.git"
   },
   "author": "É Nozes na Brita!",
-  "license": "Creative Commons Attribution Share Alike 4.0"
+  "license": "CC-BY-SA-4.0"
 }
